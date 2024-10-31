@@ -35,6 +35,12 @@ public class PlayerMovement : MonoBehaviour
         // Calculate move direction based on input
         moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
+        // Normalize move direction
+        if (moveDirection.magnitude > 1)
+        {
+            moveDirection.Normalize();
+        }
+
         // Calculate move velocity
         moveVelocity = moveDirection * maxSpeed;
 
