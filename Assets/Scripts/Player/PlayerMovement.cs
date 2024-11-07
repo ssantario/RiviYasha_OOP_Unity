@@ -9,13 +9,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Vector2 timeToStop;
     [SerializeField] Vector2 stopClamp;
 
+    Vector2 playerPosition;
     Vector2 moveDirection;
     Vector2 moveVelocity;
     Vector2 moveFriction;
     Vector2 stopFriction;
     Rigidbody2D rb;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,42 +25,39 @@ public class PlayerMovement : MonoBehaviour
         stopFriction = (-2 * maxSpeed) / (timeToStop * timeToStop);
     }
 
-    // // Update is called once per frame
-    // void Update()
-    // {
-    //     Move();
-    // }
 
     public void Move()
     {
-        // Calculate move direction based on input
+
         moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
-        // Normalize move direction
+
         if (moveDirection.magnitude > 1)
         {
             moveDirection.Normalize();
         }
 
-        // Calculate move velocity
+
         moveVelocity = moveDirection * maxSpeed;
 
-        // Apply friction
+
         Vector2 friction = GetFriction();
         moveVelocity -= friction * Time.deltaTime;
 
-        // Clamp velocity
+
         moveVelocity.x = Mathf.Clamp(moveVelocity.x, -maxSpeed.x, maxSpeed.x);
         moveVelocity.y = Mathf.Clamp(moveVelocity.y, -maxSpeed.y, maxSpeed.y);
 
-        // Apply velocity to Rigidbody2D
+
         rb.velocity = moveVelocity;
 
-        // Stop player if velocity is below stopClamp
+
         if (Mathf.Abs(rb.velocity.x) < stopClamp.x && Mathf.Abs(rb.velocity.y) < stopClamp.y)
         {
             rb.velocity = Vector2.zero;
         }
+
+        MoveBound();
     }
 
     Vector2 GetFriction()
@@ -82,7 +80,18 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveBound()
     {
-        // Empty for now
+        Vector3 pos = transform.position;
+        Vector3 minBounds = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, Camera.main.nearClipPlane));
+        Vector3 maxBounds = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, Camera.main.nearClipPlane));
+        float minX = minBounds.x + 0.5f;
+        float minY = minBounds.y + 0.5f;
+        float maxX = maxBounds.x - 0.5f;
+        float maxY = maxBounds.y - 0.5f;
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        pos.x = Mathf.Clamp(pos.x, minBounds.x, maxX);
+        pos.y = Mathf.Clamp(pos.y, minBounds.y, maxY);
+
+        transform.position = pos;
     }
 
     public bool IsMoving()
