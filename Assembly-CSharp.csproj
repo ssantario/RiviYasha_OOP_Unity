@@ -64,13 +64,24 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.49f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Enemy\EnemyV.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyT.cs" />
     <Compile Include="Assets\Scripts\Asteroid\Portal.cs" />
     <Compile Include="Assets\Scripts\GameManager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyBoss.cs" />
+    <Compile Include="Assets\Scripts\Bullet\Bullet.cs" />
     <Compile Include="Assets\Scripts\Weapons\WeaponPickup.cs" />
+    <Compile Include="Assets\Scripts\Enemy\components\HitboxComponent.cs" />
+    <Compile Include="Assets\Scripts\Enemy\components\AttackComponent.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\components\InvincibilityComponent.cs" />
     <Compile Include="Assets\Scripts\GameManager\LevelManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\components\HealthComponent.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyH.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
