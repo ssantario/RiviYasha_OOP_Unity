@@ -35,17 +35,21 @@ public class AttackComponent : MonoBehaviour
         }
         if (collision.CompareTag("Bullet"))
         {
-            int damage = collision.GetComponent<Bullet>().damage; // Get damage from Bullet
+            // int damage = collision.GetComponent<Bullet>().damage; // Get damage from Bullet
 
             if (hitbox != null)
             {
-                hitbox.Damage(damage); // Apply damage using HitboxComponent
+                hitbox.Damage(collision.GetComponent<Bullet>()); // Apply damage using HitboxComponent with Bullet parameter
             }
         }
-        hitbox = GetComponent<HitboxComponent>();
-        if (hitbox != null)
+        if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
         {
-            hitbox.Damage(damage);
+            hitbox = GetComponent<HitboxComponent>();
+            if (hitbox != null)
+            {
+                hitbox.Damage(damage);
+            }
         }
+
     }
 }
