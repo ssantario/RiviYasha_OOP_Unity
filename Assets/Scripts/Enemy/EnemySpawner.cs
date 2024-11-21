@@ -32,7 +32,6 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnCount = defaultSpawnCount;
-        startSpawning();
     }
 
     public void stopSpawning()
@@ -42,15 +41,11 @@ public class EnemySpawner : MonoBehaviour
 
     public void startSpawning()
     {
-        if (true)
+        if (spawnedEnemy.Level <= combatManager.waveNumber)
         {
-            if (true)
-            {
-                isSpawning = true;
-                StartCoroutine(SpawnEnemies());
-            }
+            isSpawning = true;
+            StartCoroutine(SpawnEnemies());
         }
-
     }
 
     // Update is called once per frame
