@@ -130,8 +130,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2fc589909a3574dbc6f9c2041e9fe0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level: 0
+  Level: 1
+  enemySpawner: {fileID: 0}
+  combatManager: {fileID: 0}
   speed: 5
+  healthComponent: {fileID: 0}
 --- !u!61 &3164481125720580266
 BoxCollider2D:
   m_ObjectHideFlags: 0
