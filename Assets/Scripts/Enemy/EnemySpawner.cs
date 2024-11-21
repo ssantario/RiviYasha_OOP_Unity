@@ -32,6 +32,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         spawnCount = defaultSpawnCount;
+        startSpawning();
     }
 
     public void stopSpawning()
@@ -41,11 +42,15 @@ public class EnemySpawner : MonoBehaviour
 
     public void startSpawning()
     {
-        if (spawnedEnemy.Level <= combatManager.waveNumber)
+        if (true)
         {
-            isSpawning = true;
-            StartCoroutine(SpawnEnemies());
+            if (true)
+            {
+                isSpawning = true;
+                StartCoroutine(SpawnEnemies());
+            }
         }
+
     }
 
     // Update is called once per frame
@@ -62,12 +67,11 @@ public class EnemySpawner : MonoBehaviour
             {
                 spawnCount = defaultSpawnCount;
             }
-            yield return new WaitForSeconds(spawnInterval);
             int i = spawnCount;
             while (i > 0)
             {
 
-                Enemy enemy = Instantiate(spawnedEnemy, transform.position, transform.rotation);
+                Enemy enemy = Instantiate(spawnedEnemy);
                 enemy.GetComponent<Enemy>().enemySpawner = this;
                 enemy.GetComponent<Enemy>().combatManager = combatManager;
                 --i;

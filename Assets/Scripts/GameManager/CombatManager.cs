@@ -54,9 +54,5 @@ public class CombatManager : MonoBehaviour
     public void onDeath()
     {
         totalEnemies--;
-        if (totalEnemies <= 0)
-        {
-            // StartCoroutine(StartNextWave());
-        }
     }
 }
