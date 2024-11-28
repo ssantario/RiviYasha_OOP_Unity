@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Enemy\components\AttackComponent.cs" />
     <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
     <Compile Include="Assets\Scripts\Enemy\components\InvincibilityComponent.cs" />
+    <Compile Include="Assets\Scripts\UI.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyClickSpawner.cs" />
     <Compile Include="Assets\Scripts\GameManager\LevelManager.cs" />
     <Compile Include="Assets\Scripts\Enemy\components\HealthComponent.cs" />
@@ -85,6 +86,10 @@
     <Compile Include="Assets\Scripts\Weapons\Weapon.cs" />
     <Compile Include="Assets\SpawnerReal.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemyH.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Main.uxml" />
+    <None Include="Assets\UI\chooseWeaponUI.uxml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
